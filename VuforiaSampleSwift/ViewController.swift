@@ -15,9 +15,14 @@ class ViewController: UIViewController {
     
     var vuforiaManager: VuforiaManager? = nil
 
-    
+    let widthSlider = UISlider.init()
+    let lenghtSlider = UISlider.init()
+    let heightSlider = UISlider.init()
+
     
     let boxMaterial = SCNMaterial()
+    let boxNode = SCNNode()
+
     fileprivate var lastSceneName: String? = nil
     
     deinit {
@@ -28,6 +33,211 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.prepare()
+        
+        self.widthSlider.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.widthSlider)
+        self.view.addConstraints(
+            [
+                NSLayoutConstraint.init(
+                    item: self.widthSlider,
+                    attribute: NSLayoutAttribute.width,
+                    relatedBy: NSLayoutRelation.equal,
+                    toItem: self.view,
+                    attribute: NSLayoutAttribute.width,
+                    multiplier: 0.8,
+                    constant: 0
+                ),
+                NSLayoutConstraint.init(
+                    item: self.widthSlider,
+                    attribute: NSLayoutAttribute.centerX,
+                    relatedBy: NSLayoutRelation.equal,
+                    toItem: self.view,
+                    attribute: NSLayoutAttribute.centerX,
+                    multiplier: 1.0,
+                    constant: 0
+                ),
+                NSLayoutConstraint.init(
+                    item: self.widthSlider,
+                    attribute: NSLayoutAttribute.bottom,
+                    relatedBy: NSLayoutRelation.equal,
+                    toItem: self.view,
+                    attribute: NSLayoutAttribute.bottom,
+                    multiplier: 1.0,
+                    constant: -50
+                )
+            ]
+        )
+        
+        self.widthSlider.maximumValue = 20
+        self.widthSlider.minimumValue = 1
+        self.widthSlider.isContinuous = true
+        
+        let widthLabel = UILabel.init()
+        widthLabel.translatesAutoresizingMaskIntoConstraints = false
+        widthLabel.text = "W:"
+        self.view.addSubview(widthLabel)
+        self.view.addConstraints(
+            [
+                NSLayoutConstraint.init(
+                    item: widthLabel,
+                    attribute: NSLayoutAttribute.right,
+                    relatedBy: NSLayoutRelation.equal,
+                    toItem: self.widthSlider,
+                    attribute: NSLayoutAttribute.left,
+                    multiplier: 1.0,
+                    constant: -8
+                ),
+                NSLayoutConstraint.init(
+                    item: widthLabel,
+                    attribute: NSLayoutAttribute.centerY,
+                    relatedBy: NSLayoutRelation.equal,
+                    toItem: self.widthSlider,
+                    attribute: NSLayoutAttribute.centerY,
+                    multiplier: 1.0,
+                    constant: 0
+                )
+            ]
+        )
+        
+        self.lenghtSlider.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.lenghtSlider)
+        self.view.addConstraints(
+            [
+                NSLayoutConstraint.init(
+                    item: self.lenghtSlider,
+                    attribute: NSLayoutAttribute.width,
+                    relatedBy: NSLayoutRelation.equal,
+                    toItem: self.view,
+                    attribute: NSLayoutAttribute.width,
+                    multiplier: 0.8,
+                    constant: 0
+                ),
+                NSLayoutConstraint.init(
+                    item: self.lenghtSlider,
+                    attribute: NSLayoutAttribute.centerX,
+                    relatedBy: NSLayoutRelation.equal,
+                    toItem: self.view,
+                    attribute: NSLayoutAttribute.centerX,
+                    multiplier: 1.0,
+                    constant: 0
+                ),
+                NSLayoutConstraint.init(
+                    item: self.lenghtSlider,
+                    attribute: NSLayoutAttribute.bottom,
+                    relatedBy: NSLayoutRelation.equal,
+                    toItem: self.widthSlider,
+                    attribute: NSLayoutAttribute.bottom,
+                    multiplier: 1.0,
+                    constant: -50
+                )
+            ]
+        )
+        
+        self.lenghtSlider.maximumValue = 20
+        self.lenghtSlider.minimumValue = 1
+        self.lenghtSlider.isContinuous = true
+        
+        let lenghtLabel = UILabel.init()
+        lenghtLabel.translatesAutoresizingMaskIntoConstraints = false
+        lenghtLabel.text = "L:"
+        self.view.addSubview(lenghtLabel)
+        self.view.addConstraints(
+            [
+                NSLayoutConstraint.init(
+                    item: lenghtLabel,
+                    attribute: NSLayoutAttribute.right,
+                    relatedBy: NSLayoutRelation.equal,
+                    toItem: self.lenghtSlider,
+                    attribute: NSLayoutAttribute.left,
+                    multiplier: 1.0,
+                    constant: -8
+                ),
+                NSLayoutConstraint.init(
+                    item: lenghtLabel,
+                    attribute: NSLayoutAttribute.centerY,
+                    relatedBy: NSLayoutRelation.equal,
+                    toItem: self.lenghtSlider,
+                    attribute: NSLayoutAttribute.centerY,
+                    multiplier: 1.0,
+                    constant: 0
+                )
+            ]
+        )
+        
+        self.heightSlider.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.heightSlider)
+        self.view.addConstraints(
+            [
+                NSLayoutConstraint.init(
+                    item: self.heightSlider,
+                    attribute: NSLayoutAttribute.width,
+                    relatedBy: NSLayoutRelation.equal,
+                    toItem: self.view,
+                    attribute: NSLayoutAttribute.width,
+                    multiplier: 0.8,
+                    constant: 0
+                ),
+                NSLayoutConstraint.init(
+                    item: self.heightSlider,
+                    attribute: NSLayoutAttribute.centerX,
+                    relatedBy: NSLayoutRelation.equal,
+                    toItem: self.view,
+                    attribute: NSLayoutAttribute.centerX,
+                    multiplier: 1.0,
+                    constant: 0
+                ),
+                NSLayoutConstraint.init(
+                    item: self.heightSlider,
+                    attribute: NSLayoutAttribute.bottom,
+                    relatedBy: NSLayoutRelation.equal,
+                    toItem: self.lenghtSlider,
+                    attribute: NSLayoutAttribute.bottom,
+                    multiplier: 1.0,
+                    constant: -50
+                )
+            ]
+        )
+        self.heightSlider.maximumValue = 20
+        self.heightSlider.minimumValue = 1
+        self.heightSlider.isContinuous = true
+        
+        let heightLabel = UILabel.init()
+        heightLabel.translatesAutoresizingMaskIntoConstraints = false
+        heightLabel.text = "H:"
+        self.view.addSubview(heightLabel)
+        self.view.addConstraints(
+            [
+                NSLayoutConstraint.init(
+                    item: heightLabel,
+                    attribute: NSLayoutAttribute.right,
+                    relatedBy: NSLayoutRelation.equal,
+                    toItem: self.heightSlider,
+                    attribute: NSLayoutAttribute.left,
+                    multiplier: 1.0,
+                    constant: -8
+                ),
+                NSLayoutConstraint.init(
+                    item: heightLabel,
+                    attribute: NSLayoutAttribute.centerY,
+                    relatedBy: NSLayoutRelation.equal,
+                    toItem: self.heightSlider,
+                    attribute: NSLayoutAttribute.centerY,
+                    multiplier: 1.0,
+                    constant: 0
+                )
+            ]
+        )
+        
+        boxNode.name = "box"
+        boxNode.geometry = SCNBox(width:1, height:1, length:1, chamferRadius:0.0)
+        boxNode.geometry?.firstMaterial = boxMaterial
+        
+        _ = Timer.scheduledTimer(timeInterval: 0.02, target: self, selector: #selector(ViewController.update), userInfo: nil, repeats: true)
+    }
+    
+    func update(){
+        boxNode.position.z = (self.heightSlider.value / 2) - 1
+        boxNode.geometry = SCNBox(width: CGFloat.init(self.widthSlider.value), height:CGFloat.init(self.lenghtSlider.value), length:CGFloat.init(self.heightSlider.value), chamferRadius:0.0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -118,7 +328,7 @@ extension ViewController: VuforiaManagerDelegate {
         for index in 0 ..< state.numberOfTrackableResults {
             let result = state.trackableResult(at: index)
             let trackerableName = result?.trackable.name
-            //print("\(trackerableName)")
+//            print("\(trackerableName)")
             if trackerableName == "stones" {
                 boxMaterial.diffuse.contents = UIColor.red
                 
@@ -184,11 +394,7 @@ extension ViewController: VuforiaEAGLViewSceneSource, VuforiaEAGLViewDelegate {
         planeMaterial.transparency = 0.6
         planeNode.geometry?.firstMaterial = planeMaterial
         scene.rootNode.addChildNode(planeNode)
-        
-        let boxNode = SCNNode()
-        boxNode.name = "box"
-        boxNode.geometry = SCNBox(width:1, height:1, length:1, chamferRadius:0.0)
-        boxNode.geometry?.firstMaterial = boxMaterial
+
         scene.rootNode.addChildNode(boxNode)
         
         return scene
@@ -234,6 +440,8 @@ extension ViewController: VuforiaEAGLViewSceneSource, VuforiaEAGLViewDelegate {
     func vuforiaEAGLView(_ view: VuforiaEAGLView!, didTouchDownNode node: SCNNode!) {
         print("touch down \(node.name ?? "")")
         boxMaterial.transparency = 0.6
+        boxMaterial.diffuse.contents = #imageLiteral(resourceName: "Plik113 2")
+        boxMaterial.isDoubleSided = true
     }
     
     func vuforiaEAGLView(_ view: VuforiaEAGLView!, didTouchUp node: SCNNode!) {
