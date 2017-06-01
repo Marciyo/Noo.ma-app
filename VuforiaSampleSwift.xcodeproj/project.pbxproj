@@ -32,9 +32,13 @@
 		92AA11851D27B96300E56CBE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92AA11841D27B96300E56CBE /* Localizable.strings */; };
 		9A009A981EDDABDD00D16890 /* StonesAndChips.dat in Resources */ = {isa = PBXBuildFile; fileRef = 9A009A921EDDABDD00D16890 /* StonesAndChips.dat */; };
 		9A009A991EDDABDD00D16890 /* StonesAndChips.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9A009A931EDDABDD00D16890 /* StonesAndChips.xml */; };
+		9A009A9D1EDE977D00D16890 /* ExtendedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A009A9C1EDE977D00D16890 /* ExtendedButton.swift */; };
+		9A7A4AEA1EE0695C00323178 /* PrimitivesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7A4AE91EE0695C00323178 /* PrimitivesScene.swift */; };
+		FA226975EE9796A64A00540C /* Pods_VuforiaSampleSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E01DD092863C54D2A2AC9D /* Pods_VuforiaSampleSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		76E01DD092863C54D2A2AC9D /* Pods_VuforiaSampleSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VuforiaSampleSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		926096D31D4163B600510C24 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		927B76D31D27FDC600C4F5CC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		927B76D41D27FDC600C4F5CC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -152,6 +156,10 @@
 		92AA11841D27B96300E56CBE /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		9A009A921EDDABDD00D16890 /* StonesAndChips.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = StonesAndChips.dat; path = VuforiaSampleSwift/Assets.xcassets/ImageTargets/StonesAndChips.dat; sourceTree = SOURCE_ROOT; };
 		9A009A931EDDABDD00D16890 /* StonesAndChips.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = StonesAndChips.xml; path = VuforiaSampleSwift/Assets.xcassets/ImageTargets/StonesAndChips.xml; sourceTree = SOURCE_ROOT; };
+		9A009A9C1EDE977D00D16890 /* ExtendedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedButton.swift; sourceTree = "<group>"; };
+		9A7A4AE91EE0695C00323178 /* PrimitivesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimitivesScene.swift; sourceTree = "<group>"; };
+		ABE0B34719BB1119C42FE723 /* Pods-VuforiaSampleSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VuforiaSampleSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VuforiaSampleSwift/Pods-VuforiaSampleSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		B07C4EB51EEFA6AB437F856F /* Pods-VuforiaSampleSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VuforiaSampleSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-VuforiaSampleSwift/Pods-VuforiaSampleSwift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +177,7 @@
 				927B76DC1D27FDE500C4F5CC /* SystemConfiguration.framework in Frameworks */,
 				927B76D71D27FDC600C4F5CC /* AVFoundation.framework in Frameworks */,
 				927B76D81D27FDC600C4F5CC /* CoreMotion.framework in Frameworks */,
+				FA226975EE9796A64A00540C /* Pods_VuforiaSampleSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +381,8 @@
 			children = (
 				92AA11071D27A5EB00E56CBE /* VuforiaSampleSwift */,
 				92AA11061D27A5EB00E56CBE /* Products */,
+				DBE7A5E2DC5A937C492EA79C /* Pods */,
+				FCA0285782D6728C7F1F9D04 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -391,6 +402,8 @@
 				927B76ED1D28070D00C4F5CC /* VuforiaAssets */,
 				92AA11081D27A5EB00E56CBE /* AppDelegate.swift */,
 				92AA110A1D27A5EB00E56CBE /* ViewController.swift */,
+				9A009A9C1EDE977D00D16890 /* ExtendedButton.swift */,
+				9A7A4AE91EE0695C00323178 /* PrimitivesScene.swift */,
 				92AA110C1D27A5EB00E56CBE /* Main.storyboard */,
 				92AA110F1D27A5EB00E56CBE /* Assets.xcassets */,
 				92AA11111D27A5EB00E56CBE /* LaunchScreen.storyboard */,
@@ -411,6 +424,23 @@
 			path = ImageTargets;
 			sourceTree = "<group>";
 		};
+		DBE7A5E2DC5A937C492EA79C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ABE0B34719BB1119C42FE723 /* Pods-VuforiaSampleSwift.debug.xcconfig */,
+				B07C4EB51EEFA6AB437F856F /* Pods-VuforiaSampleSwift.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FCA0285782D6728C7F1F9D04 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				76E01DD092863C54D2A2AC9D /* Pods_VuforiaSampleSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -418,9 +448,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92AA11171D27A5EB00E56CBE /* Build configuration list for PBXNativeTarget "VuforiaSampleSwift" */;
 			buildPhases = (
+				A9302E9466C5E8608F71048F /* [CP] Check Pods Manifest.lock */,
 				92AA11011D27A5EB00E56CBE /* Sources */,
 				92AA11021D27A5EB00E56CBE /* Frameworks */,
 				92AA11031D27A5EB00E56CBE /* Resources */,
+				93A1CDF3333C4CBE222588E2 /* [CP] Embed Pods Frameworks */,
+				9C56BD50682AAD66DDD294D9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -486,6 +519,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		93A1CDF3333C4CBE222588E2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VuforiaSampleSwift/Pods-VuforiaSampleSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C56BD50682AAD66DDD294D9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VuforiaSampleSwift/Pods-VuforiaSampleSwift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9302E9466C5E8608F71048F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		92AA11011D27A5EB00E56CBE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -493,7 +574,9 @@
 			files = (
 				927B76EA1D2806EF00C4F5CC /* VuforiaEAGLView.mm in Sources */,
 				927B76FD1D2816DB00C4F5CC /* VuforiaShaderUtils.m in Sources */,
+				9A7A4AEA1EE0695C00323178 /* PrimitivesScene.swift in Sources */,
 				92AA110B1D27A5EB00E56CBE /* ViewController.swift in Sources */,
+				9A009A9D1EDE977D00D16890 /* ExtendedButton.swift in Sources */,
 				92AA11091D27A5EB00E56CBE /* AppDelegate.swift in Sources */,
 				927B76EB1D2806EF00C4F5CC /* VuforiaManager.mm in Sources */,
 				927B76EC1D2806EF00C4F5CC /* VuforiaObjects.mm in Sources */,
@@ -614,6 +697,7 @@
 		};
 		92AA11181D27A5EB00E56CBE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ABE0B34719BB1119C42FE723 /* Pods-VuforiaSampleSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -638,6 +722,7 @@
 		};
 		92AA11191D27A5EB00E56CBE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B07C4EB51EEFA6AB437F856F /* Pods-VuforiaSampleSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
