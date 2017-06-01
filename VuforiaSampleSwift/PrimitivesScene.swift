@@ -26,7 +26,7 @@ class PrimitivesScene: SCNScene {
     //const
     var BOARD_WIDTH: CGFloat = 0.0
     var BOARD_LENGTH: CGFloat = 0.0
-    var BOARD_HEIGHT: CGFloat = 0.2
+//    var BOARD_HEIGHT: CGFloat = 0.2
     let LEG_HEIGHT: CGFloat = 2.0
     
     //scene
@@ -39,12 +39,14 @@ class PrimitivesScene: SCNScene {
     var rightConnection: SCNNode = SCNNode.init()
     var frontConnection: SCNNode = SCNNode.init()
     var backConnection: SCNNode = SCNNode.init()
+    
+    let mainNode = SCNNode.init()
 
     override init() {
         super.init()
-       
-        //TABLE DAE work fine with obj file to
 //        let table = self.collada2SCNNode(filepath: "art.scnassets/table.dae")
+//
+//        //TABLE DAE work fine with obj file to
 //        self.rootNode.addChildNode(table)
         
         //Table
@@ -82,15 +84,9 @@ class PrimitivesScene: SCNScene {
         
         backConnection = self.createConnectionLeg(width: boardWidth, height: legWidth, lenght: legWidth, chamferRadius: 0.0)
         backConnection.position = SCNVector3.init(0.0, -(legHeight + legWidth/2), -(boardLength/2 - legLenght/2))
-        
-        let camera = SCNCamera.init()
-        camera.xFov = 40
-        camera.yFov = 40
-        
-        let cameraNode = SCNNode.init()
-        cameraNode.camera = camera
-        cameraNode.position = SCNVector3.init(0, 0, 20)
-        self.rootNode.addChildNode(cameraNode)
+        mainNode.eulerAngles = SCNVector3.init(90*3.1417/180, 0, 0)
+
+        rootNode.addChildNode(mainNode)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -147,12 +143,11 @@ class PrimitivesScene: SCNScene {
         let boardGeometry = SCNBox(width: boardWidth, height: boardHeight, length: boardLength, chamferRadius: 0.02)
         
         let material_L = SCNMaterial()
-        material_L.diffuse.contents = UIImage(named: "art.scnassets/texture.jpg")
+        material_L.diffuse.contents = #imageLiteral(resourceName: "texture")
         boardGeometry.materials = [material_L]
         
         let boardNode = SCNNode(geometry: boardGeometry)
-        
-        rootNode.addChildNode(boardNode)
+        mainNode.addChildNode(boardNode)
         return boardNode
     }
     
@@ -161,8 +156,9 @@ class PrimitivesScene: SCNScene {
         legGeometry.firstMaterial?.diffuse.contents = UIColor.black
         
         let legNode = SCNNode(geometry: legGeometry)
-        
-        rootNode.addChildNode(legNode)
+//        legNode.eulerAngles = SCNVector3.init(90*3.1417/180, 0, 0)
+
+        mainNode.addChildNode(legNode)
         return legNode
     }
     
@@ -171,8 +167,8 @@ class PrimitivesScene: SCNScene {
         legGeometry.firstMaterial?.diffuse.contents = UIColor.black
         
         let legNode = SCNNode(geometry: legGeometry)
-        
-        rootNode.addChildNode(legNode)
+//        legNode.eulerAngles = SCNVector3.init(90*3.1417/180, 0, 0)
+        mainNode.addChildNode(legNode)
         return legNode
     }
     

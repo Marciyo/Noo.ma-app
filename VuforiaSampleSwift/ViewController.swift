@@ -22,8 +22,8 @@ class ViewController: UIViewController {
     let lenghtSlider = UISlider.init()
     let heightSlider = UISlider.init()
 
-//    let boxMaterial = SCNMaterial()
-//    let boxNode = SCNNode()
+    let sliderMaxValue: Float = 20
+    
     let scnView = SCNView.init()
 
     fileprivate var lastSceneName: String? = nil
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
             item.bottom.equalToSuperview().offset(-50)
         }
         
-        self.widthSlider.maximumValue = 2
+        self.widthSlider.maximumValue = self.sliderMaxValue
         self.widthSlider.minimumValue = 1
         self.widthSlider.isContinuous = true
         
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
             item.bottom.equalTo(self.widthSlider).offset(-50)
         }
         
-        self.lenghtSlider.maximumValue = 2
+        self.lenghtSlider.maximumValue = self.sliderMaxValue
         self.lenghtSlider.minimumValue = 1
         self.lenghtSlider.isContinuous = true
         
@@ -86,7 +86,7 @@ class ViewController: UIViewController {
             item.bottom.equalTo(self.lenghtSlider).offset(-50)
         }
         
-        self.heightSlider.maximumValue = 1.2
+        self.heightSlider.maximumValue = self.sliderMaxValue
         self.heightSlider.minimumValue = 1
         self.heightSlider.isContinuous = true
         
@@ -100,6 +100,7 @@ class ViewController: UIViewController {
         
         let logoLabel = UILabel.init()
         logoLabel.text = "noo.ma"
+//        logoLabel.backgroundColor = UIColor.white
         logoLabel.textColor = UIColor.black
         logoLabel.textAlignment = .right
         logoLabel.font = UIFont.systemFont(ofSize: UIFont.systemFontSize + 10, weight: 8)
@@ -173,7 +174,6 @@ class ViewController: UIViewController {
             item.left.equalTo(whiteButton.snp.right).offset(15)
             item.top.equalToSuperview().offset(topButtonOffset)
         }
-//        _ = Timer.scheduledTimer(timeInterval: 0.02, target: self, selector: #selector(ViewController.update), userInfo: nil, repeats: true)
     }
     
     
@@ -204,14 +204,6 @@ class ViewController: UIViewController {
             primitive.changeScaleValue(width: CGFloat(self.widthSlider.value), height: CGFloat(self.heightSlider.value), lenght: CGFloat(sender.value))
         }
     }
-    
-//    func update(){
-//        boxNode.position.z = (self.heightSlider.value / 2) - 1
-//        boxNode.geometry = SCNBox(width: CGFloat.init(self.widthSlider.value), height:CGFloat.init(self.lenghtSlider.value), length:CGFloat.init(self.heightSlider.value), chamferRadius:0.0)
-//        boxMaterial.diffuse.contents = UIColor.init(red: CGFloat.init(self.widthSlider.value)/20, green: CGFloat.init(self.lenghtSlider.value)/20, blue: CGFloat.init(self.heightSlider.value)/20, alpha: 1.0)
-//            boxNode.geometry?.firstMaterial = boxMaterial
-//
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -325,28 +317,15 @@ extension ViewController: VuforiaEAGLViewSceneSource, VuforiaEAGLViewDelegate {
         return createStonesScene(with: view)
     }
     
-    
     fileprivate func createStonesScene(with view: VuforiaEAGLView) -> SCNScene {
-        
-        self.scnView.scene = PrimitivesScene()
-        self.scnView.backgroundColor = UIColor.clear
+        self.scnView.scene = PrimitivesScene.init()
         self.scnView.autoenablesDefaultLighting = true
         self.scnView.allowsCameraControl = false
-
-//        let lightNode = SCNNode()
-//        lightNode.light = SCNLight()
-//        lightNode.light?.type = .omni
-//        lightNode.light?.color = UIColor.lightGray
-//        lightNode.position = SCNVector3(x:0, y:10, z:10)
-//        self.scnView.rootNode.addChildNode(lightNode)
-        
-//        let ambientLightNode = SCNNode()
-//        ambientLightNode.light = SCNLight()
-//        ambientLightNode.light?.type = .ambient
-//        ambientLightNode.light?.color = UIColor.darkGray
-//        self.scnView.rootNode.addChildNode(ambientLightNode)
-        
-        return self.scnView.scene!
+        guard let scene = self.scnView.scene else {
+            fatalError("Piotrek to bóbr")
+        }
+        scene.setAttribute(SCNVector3.init(100, 0, 0), forKey: SCNScene.Attribute.upAxis._rawValue as String)
+        return scene
     }
     
     func vuforiaEAGLView(_ view: VuforiaEAGLView!, didTouchDownNode node: SCNNode!) {

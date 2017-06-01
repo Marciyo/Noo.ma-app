@@ -34,6 +34,7 @@
 		9A009A991EDDABDD00D16890 /* StonesAndChips.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9A009A931EDDABDD00D16890 /* StonesAndChips.xml */; };
 		9A009A9D1EDE977D00D16890 /* ExtendedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A009A9C1EDE977D00D16890 /* ExtendedButton.swift */; };
 		9A7A4AEA1EE0695C00323178 /* PrimitivesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7A4AE91EE0695C00323178 /* PrimitivesScene.swift */; };
+		9A7A4AEC1EE0828E00323178 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A7A4AEB1EE0828E00323178 /* art.scnassets */; };
 		FA226975EE9796A64A00540C /* Pods_VuforiaSampleSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E01DD092863C54D2A2AC9D /* Pods_VuforiaSampleSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -158,6 +159,7 @@
 		9A009A931EDDABDD00D16890 /* StonesAndChips.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = StonesAndChips.xml; path = VuforiaSampleSwift/Assets.xcassets/ImageTargets/StonesAndChips.xml; sourceTree = SOURCE_ROOT; };
 		9A009A9C1EDE977D00D16890 /* ExtendedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedButton.swift; sourceTree = "<group>"; };
 		9A7A4AE91EE0695C00323178 /* PrimitivesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimitivesScene.swift; sourceTree = "<group>"; };
+		9A7A4AEB1EE0828E00323178 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		ABE0B34719BB1119C42FE723 /* Pods-VuforiaSampleSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VuforiaSampleSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VuforiaSampleSwift/Pods-VuforiaSampleSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		B07C4EB51EEFA6AB437F856F /* Pods-VuforiaSampleSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VuforiaSampleSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-VuforiaSampleSwift/Pods-VuforiaSampleSwift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -406,6 +408,7 @@
 				9A7A4AE91EE0695C00323178 /* PrimitivesScene.swift */,
 				92AA110C1D27A5EB00E56CBE /* Main.storyboard */,
 				92AA110F1D27A5EB00E56CBE /* Assets.xcassets */,
+				9A7A4AEB1EE0828E00323178 /* art.scnassets */,
 				92AA11111D27A5EB00E56CBE /* LaunchScreen.storyboard */,
 				92AA11141D27A5EB00E56CBE /* Info.plist */,
 				92AA11841D27B96300E56CBE /* Localizable.strings */,
@@ -512,6 +515,7 @@
 				9A009A981EDDABDD00D16890 /* StonesAndChips.dat in Resources */,
 				92AA11851D27B96300E56CBE /* Localizable.strings in Resources */,
 				9A009A991EDDABDD00D16890 /* StonesAndChips.xml in Resources */,
+				9A7A4AEC1EE0828E00323178 /* art.scnassets in Resources */,
 				928C34241EAF608600BC07DE /* readme.txt in Resources */,
 				92AA110E1D27A5EB00E56CBE /* Main.storyboard in Resources */,
 			);
