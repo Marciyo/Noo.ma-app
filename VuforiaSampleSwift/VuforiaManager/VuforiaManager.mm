@@ -523,7 +523,7 @@ namespace {
 {
     // Get the default video mode
     Vuforia::CameraDevice& cameraDevice = Vuforia::CameraDevice::getInstance();
-    Vuforia::VideoMode videoMode = cameraDevice.getVideoMode(Vuforia::CameraDevice::MODE_DEFAULT);
+    Vuforia::VideoMode videoMode = cameraDevice.getVideoMode(Vuforia::CameraDevice::MODE_OPTIMIZE_QUALITY);
     
     // Configure the video background
     Vuforia::VideoBackgroundConfig config;
@@ -690,7 +690,7 @@ namespace {
     }
     
     // select the default video mode
-    if(! Vuforia::CameraDevice::getInstance().selectVideoMode(Vuforia::CameraDevice::MODE_DEFAULT)) {
+    if(! Vuforia::CameraDevice::getInstance().selectVideoMode(Vuforia::CameraDevice::MODE_OPTIMIZE_QUALITY)) {
         [self buildErrorWithCode:VuforiaError_InitializingCamera error:error];
         return NO;
     }
@@ -698,6 +698,10 @@ namespace {
     // configure Vuforia video background
     [self configureVideoBackgroundWithViewWidth:viewWidth andHeight:viewHeight];
     
+    // set the FPS to its recommended value
+    int recommendedFps = Vuforia::Renderer::getInstance().getRecommendedFps();
+    Vuforia::Renderer::getInstance().setTargetFps(recommendedFps);
+
     // start the camera
     if (!Vuforia::CameraDevice::getInstance().start()) {
         [self buildErrorWithCode:VuforiaError_StartingCamera error:error];
