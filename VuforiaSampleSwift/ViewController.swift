@@ -135,6 +135,8 @@ class ViewController: UIViewController {
     func createUIButtons(){
         let buttonSize = 35
         let topButtonOffset = 30
+        let leftButtonOffset = 15
+        let betweenButtonsOffset = 15
         
         let brownButton = UIButton.init()
         brownButton.addTarget(self, action: #selector(self.changeColorAction(sender:)), for: UIControlEvents.touchUpInside)
@@ -144,7 +146,7 @@ class ViewController: UIViewController {
         self.view.addSubview(brownButton)
         brownButton.snp.makeConstraints { (item) in
             item.height.width.equalTo(buttonSize)
-            item.left.equalToSuperview().offset(15)
+            item.left.equalToSuperview().offset(leftButtonOffset)
             item.top.equalToSuperview().offset(topButtonOffset)
         }
         
@@ -156,8 +158,8 @@ class ViewController: UIViewController {
         self.view.addSubview(grayButton)
         grayButton.snp.makeConstraints { (item) in
             item.height.width.equalTo(buttonSize)
-            item.left.equalToSuperview().offset(15)
-            item.top.equalTo(brownButton.snp.bottom).offset(15)
+            item.left.equalToSuperview().offset(leftButtonOffset)
+            item.top.equalTo(brownButton.snp.bottom).offset(betweenButtonsOffset)
         }
         
         let blackButton = UIButton.init()
@@ -168,8 +170,8 @@ class ViewController: UIViewController {
         self.view.addSubview(blackButton)
         blackButton.snp.makeConstraints { (item) in
             item.height.width.equalTo(buttonSize)
-            item.left.equalToSuperview().offset(15)
-            item.top.equalTo(grayButton.snp.bottom).offset(15)
+            item.left.equalToSuperview().offset(leftButtonOffset)
+            item.top.equalTo(grayButton.snp.bottom).offset(betweenButtonsOffset)
         }
         
         let whiteButton = UIButton.init()
@@ -182,8 +184,8 @@ class ViewController: UIViewController {
         self.view.addSubview(whiteButton)
         whiteButton.snp.makeConstraints { (item) in
             item.height.width.equalTo(buttonSize)
-            item.left.equalToSuperview().offset(15)
-            item.top.equalTo(blackButton.snp.bottom).offset(15)
+            item.left.equalToSuperview().offset(leftButtonOffset)
+            item.top.equalTo(blackButton.snp.bottom).offset(betweenButtonsOffset)
         }
         
         let mButton = UIButton.init()
@@ -194,8 +196,8 @@ class ViewController: UIViewController {
         self.view.addSubview(mButton)
         mButton.snp.makeConstraints { (item) in
             item.height.width.equalTo(buttonSize)
-            item.left.equalToSuperview().offset(15)
-            item.top.equalTo(whiteButton.snp.bottom).offset(15)
+            item.left.equalToSuperview().offset(leftButtonOffset)
+            item.top.equalTo(whiteButton.snp.bottom).offset(betweenButtonsOffset)
         }
     }
     
