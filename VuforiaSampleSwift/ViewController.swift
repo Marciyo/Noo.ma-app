@@ -38,18 +38,7 @@ class ViewController: UIViewController {
         self.prepare()
 
         self.createUISliders()
-        
-        let logoLabel = UILabel.init()
-        logoLabel.text = "noo.ma"
-        logoLabel.textColor = UIColor.black
-        logoLabel.textAlignment = .right
-        logoLabel.font = UIFont.systemFont(ofSize: UIFont.systemFontSize + 10, weight: 8)
-        self.view.addSubview(logoLabel)
-        logoLabel.snp.makeConstraints { (item) in
-            item.top.equalToSuperview().offset(30)
-            item.right.equalToSuperview().offset(-30)
-        }
-        
+        self.createUILogo()
         self.createUIButtons()
     }
     
@@ -117,9 +106,35 @@ class ViewController: UIViewController {
         }
     }
     
+    func createUILogo(){
+        
+        let logoLabel = UILabel.init()
+        logoLabel.text = "noo.ma"
+        logoLabel.textColor = UIColor.black
+        logoLabel.textAlignment = .right
+        logoLabel.font = UIFont.systemFont(ofSize: UIFont.systemFontSize + 10, weight: 8)
+        self.view.addSubview(logoLabel)
+        logoLabel.snp.makeConstraints { (item) in
+            item.top.equalToSuperview().offset(30)
+            item.right.equalToSuperview().offset(-30)
+        }
+        
+        let logoBackground = UIView.init()
+        logoBackground.backgroundColor = UIColor.white
+        logoBackground.layer.cornerRadius = 8
+        self.view.addSubview(logoBackground)
+        self.view.bringSubview(toFront: logoLabel)
+        logoBackground.snp.makeConstraints { (item) in
+            item.centerX.equalTo(logoLabel)
+            item.centerY.equalTo(logoLabel)
+            item.height.equalTo(40)
+            item.width.equalTo(110)
+        }
+    }
+    
     func createUIButtons(){
-        let buttonSize = 30
-        let topButtonOffset = 60
+        let buttonSize = 35
+        let topButtonOffset = 30
         
         let brownButton = UIButton.init()
         brownButton.addTarget(self, action: #selector(self.changeColorAction(sender:)), for: UIControlEvents.touchUpInside)
@@ -141,8 +156,8 @@ class ViewController: UIViewController {
         self.view.addSubview(grayButton)
         grayButton.snp.makeConstraints { (item) in
             item.height.width.equalTo(buttonSize)
-            item.left.equalTo(brownButton.snp.right).offset(15)
-            item.top.equalToSuperview().offset(topButtonOffset)
+            item.left.equalToSuperview().offset(15)
+            item.top.equalTo(brownButton.snp.bottom).offset(15)
         }
         
         let blackButton = UIButton.init()
@@ -153,8 +168,8 @@ class ViewController: UIViewController {
         self.view.addSubview(blackButton)
         blackButton.snp.makeConstraints { (item) in
             item.height.width.equalTo(buttonSize)
-            item.left.equalTo(grayButton.snp.right).offset(15)
-            item.top.equalToSuperview().offset(topButtonOffset)
+            item.left.equalToSuperview().offset(15)
+            item.top.equalTo(grayButton.snp.bottom).offset(15)
         }
         
         let whiteButton = UIButton.init()
@@ -167,8 +182,8 @@ class ViewController: UIViewController {
         self.view.addSubview(whiteButton)
         whiteButton.snp.makeConstraints { (item) in
             item.height.width.equalTo(buttonSize)
-            item.left.equalTo(blackButton.snp.right).offset(15)
-            item.top.equalToSuperview().offset(topButtonOffset)
+            item.left.equalToSuperview().offset(15)
+            item.top.equalTo(blackButton.snp.bottom).offset(15)
         }
         
         let mButton = UIButton.init()
@@ -179,8 +194,8 @@ class ViewController: UIViewController {
         self.view.addSubview(mButton)
         mButton.snp.makeConstraints { (item) in
             item.height.width.equalTo(buttonSize)
-            item.left.equalTo(whiteButton.snp.right).offset(15)
-            item.top.equalToSuperview().offset(topButtonOffset)
+            item.left.equalToSuperview().offset(15)
+            item.top.equalTo(whiteButton.snp.bottom).offset(15)
         }
     }
     
