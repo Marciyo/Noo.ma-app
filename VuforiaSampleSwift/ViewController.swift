@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     let scnView = SCNView.init()
 
     fileprivate var lastSceneName: String? = nil
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -36,6 +36,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.prepare()
+
+        self.createUISliders()
+        
+        let logoLabel = UILabel.init()
+        logoLabel.text = "noo.ma"
+        logoLabel.textColor = UIColor.black
+        logoLabel.textAlignment = .right
+        logoLabel.font = UIFont.systemFont(ofSize: UIFont.systemFontSize + 10, weight: 8)
+        self.view.addSubview(logoLabel)
+        logoLabel.snp.makeConstraints { (item) in
+            item.top.equalToSuperview().offset(30)
+            item.right.equalToSuperview().offset(-30)
+        }
+        
+        self.createUIButtons()
+    }
+    
+    func createUISliders(){
         self.widthSlider.addTarget(self, action: #selector(self.widthChangeAction(sender:)), for: UIControlEvents.valueChanged)
         self.view.addSubview(self.widthSlider)
         self.widthSlider.snp.makeConstraints { (item) in
@@ -97,19 +115,9 @@ class ViewController: UIViewController {
             item.right.equalTo(self.heightSlider.snp.left).offset(-8)
             item.centerY.equalTo(self.heightSlider)
         }
-        
-        let logoLabel = UILabel.init()
-        logoLabel.text = "noo.ma"
-//        logoLabel.backgroundColor = UIColor.white
-        logoLabel.textColor = UIColor.black
-        logoLabel.textAlignment = .right
-        logoLabel.font = UIFont.systemFont(ofSize: UIFont.systemFontSize + 10, weight: 8)
-        self.view.addSubview(logoLabel)
-        logoLabel.snp.makeConstraints { (item) in
-            item.top.equalToSuperview().offset(30)
-            item.right.equalToSuperview().offset(-30)
-        }
-        
+    }
+    
+    func createUIButtons(){
         let buttonSize = 30
         let topButtonOffset = 60
         
@@ -175,7 +183,6 @@ class ViewController: UIViewController {
             item.top.equalToSuperview().offset(topButtonOffset)
         }
     }
-    
     
     func changeColorAction(sender: UIButton){
         if let scene = self.scnView.scene {
@@ -293,20 +300,13 @@ extension ViewController: VuforiaManagerDelegate {
         for index in 0 ..< state.numberOfTrackableResults {
             let result = state.trackableResult(at: index)
             let trackerableName = result?.trackable.name
-//            print("\(trackerableName)")
+            //            print("\(trackerableName)")
             if trackerableName == "stones" {
                 if lastSceneName != "stones" {
                     manager.eaglView.setNeedsChangeSceneWithUserInfo(["scene" : "stones"])
                     lastSceneName = "stones"
                 }
-            }else {
-                
-                if lastSceneName != "chips" {
-                    manager.eaglView.setNeedsChangeSceneWithUserInfo(["scene" : "chips"])
-                    lastSceneName = "chips"
-                }
             }
-            
         }
     }
 }
@@ -321,11 +321,7 @@ extension ViewController: VuforiaEAGLViewSceneSource, VuforiaEAGLViewDelegate {
         self.scnView.scene = PrimitivesScene.init()
         self.scnView.autoenablesDefaultLighting = true
         self.scnView.allowsCameraControl = false
-        guard let scene = self.scnView.scene else {
-            fatalError("Piotrek to bóbr")
-        }
-        scene.setAttribute(SCNVector3.init(100, 0, 0), forKey: SCNScene.Attribute.upAxis._rawValue as String)
-        return scene
+        return self.scnView.scene!
     }
     
     func vuforiaEAGLView(_ view: VuforiaEAGLView!, didTouchDownNode node: SCNNode!) {
@@ -340,4 +336,3 @@ extension ViewController: VuforiaEAGLViewSceneSource, VuforiaEAGLViewDelegate {
         print("touch cancel \(node.name ?? "")")
     }
 }
-

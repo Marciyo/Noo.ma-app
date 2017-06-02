@@ -26,7 +26,6 @@ class PrimitivesScene: SCNScene {
     //const
     var BOARD_WIDTH: CGFloat = 0.0
     var BOARD_LENGTH: CGFloat = 0.0
-//    var BOARD_HEIGHT: CGFloat = 0.2
     let LEG_HEIGHT: CGFloat = 2.0
     
     //scene
@@ -44,49 +43,53 @@ class PrimitivesScene: SCNScene {
 
     override init() {
         super.init()
+        
 //        let table = self.collada2SCNNode(filepath: "art.scnassets/table.dae")
-//
 //        //TABLE DAE work fine with obj file to
 //        self.rootNode.addChildNode(table)
         
         //Table
-        BOARD_WIDTH = (diskRadius * 6.0 + boardPadding)/2
-        boardWidth = BOARD_WIDTH
-        BOARD_LENGTH = (diskRadius * 2.0 + boardPadding)
-        boardLength = BOARD_LENGTH
-        
-        let legY = -LEG_HEIGHT + legHeight/2
-        let boardY = legY + legHeight/2 + boardHeight/2
-        
-        board = self.createBoard()
-        board.position = SCNVector3.init(0.0, boardY, 0.0)
-        
-        leftBackLeg = self.createLeg()
-        leftBackLeg.position = SCNVector3.init((-(self.boardWidth/2) + (legWidth/2)), legY, -(boardLength/2 - legLenght/2))
-        
-        leftFrontLeg = self.createLeg()
-        leftFrontLeg.position = SCNVector3.init((-(self.boardWidth/2) + (legWidth/2)), legY, (boardLength/2 - legLenght/2))
-        
-        rightBackLeg = self.createLeg()
-        rightBackLeg.position = SCNVector3.init(((self.boardWidth/2) - (legWidth/2)), legY, -(boardLength/2 - legLenght/2))
-        
-        rightFrontLeg = self.createLeg()
-        rightFrontLeg.position = SCNVector3.init(((self.boardWidth/2) - (legWidth/2)), legY, (boardLength/2 - legLenght/2))
-        
-        leftConnection = self.createConnectionLeg(width: legWidth, height: legWidth, lenght: boardLength, chamferRadius: 0.0)
-        leftConnection.position = SCNVector3.init((-(self.boardWidth/2) + (legWidth/2)), -(legHeight + legWidth/2), 0.0)
-        
-        rightConnection = self.createConnectionLeg(width: legWidth, height: legWidth, lenght: boardLength, chamferRadius: 0.0)
-        rightConnection.position = SCNVector3.init(((self.boardWidth/2) - (legWidth/2)), -(legHeight + legWidth/2), 0.0)
-        
-        frontConnection = self.createConnectionLeg(width: boardWidth, height: legWidth, lenght: legWidth, chamferRadius: 0.0)
-        frontConnection.position = SCNVector3.init(0.0, -(legHeight + legWidth/2), (boardLength/2 - legLenght/2))
-        
-        backConnection = self.createConnectionLeg(width: boardWidth, height: legWidth, lenght: legWidth, chamferRadius: 0.0)
-        backConnection.position = SCNVector3.init(0.0, -(legHeight + legWidth/2), -(boardLength/2 - legLenght/2))
-        mainNode.eulerAngles = SCNVector3.init(90*3.1417/180, 0, 0)
+        self.createTable()
 
-        rootNode.addChildNode(mainNode)
+        rootNode.addChildNode(self.mainNode)
+    }
+    
+    func createTable(){
+        self.BOARD_WIDTH = (self.diskRadius * 6.0 + self.boardPadding)/2
+        self.boardWidth = self.BOARD_WIDTH
+        self.BOARD_LENGTH = (self.diskRadius * 2.0 + self.boardPadding)
+        self.boardLength = self.BOARD_LENGTH
+        
+        let legY = -self.LEG_HEIGHT + self.legHeight/2
+        let boardY = legY + self.legHeight/2 + self.boardHeight/2
+        
+        self.board = self.createBoard()
+        self.board.position = SCNVector3.init(0.0, boardY, 0.0)
+        
+        self.leftBackLeg = self.createLeg()
+        self.leftBackLeg.position = SCNVector3.init((-(self.boardWidth/2) + (self.legWidth/2)), legY, -(self.boardLength/2 - self.legLenght/2))
+        
+        self.leftFrontLeg = self.createLeg()
+        self.leftFrontLeg.position = SCNVector3.init((-(self.boardWidth/2) + (self.legWidth/2)), legY, (self.boardLength/2 - self.legLenght/2))
+        
+        self.rightBackLeg = self.createLeg()
+        self.rightBackLeg.position = SCNVector3.init(((self.boardWidth/2) - (self.legWidth/2)), legY, -(self.boardLength/2 - self.legLenght/2))
+        
+        self.rightFrontLeg = self.createLeg()
+        self.rightFrontLeg.position = SCNVector3.init(((self.boardWidth/2) - (self.legWidth/2)), legY, (self.boardLength/2 - self.legLenght/2))
+        
+        self.leftConnection = self.createConnectionLeg(width: self.legWidth, height: self.legWidth, lenght: self.boardLength, chamferRadius: 0.0)
+        self.leftConnection.position = SCNVector3.init((-(self.boardWidth/2) + (self.legWidth/2)), -(self.legHeight + self.legWidth/2), 0.0)
+        
+        self.rightConnection = self.createConnectionLeg(width: self.legWidth, height: legWidth, lenght: boardLength, chamferRadius: 0.0)
+        self.rightConnection.position = SCNVector3.init(((self.boardWidth/2) - (self.legWidth/2)), -(self.legHeight + self.legWidth/2), 0.0)
+        
+        self.frontConnection = self.createConnectionLeg(width: self.boardWidth, height: self.legWidth, lenght: self.legWidth, chamferRadius: 0.0)
+        self.frontConnection.position = SCNVector3.init(0.0, -(self.legHeight + legWidth/2), (self.boardLength/2 - self.legLenght/2))
+        
+        self.backConnection = self.createConnectionLeg(width: self.boardWidth, height: self.legWidth, lenght: self.legWidth, chamferRadius: 0.0)
+        self.backConnection.position = SCNVector3.init(0.0, -(self.legHeight + self.legWidth/2), -(self.boardLength/2 - self.legLenght/2))
+        self.mainNode.eulerAngles = SCNVector3.init(90*3.1417/180, 0, 0)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -101,14 +104,14 @@ class PrimitivesScene: SCNScene {
         self.frontConnection.scale = SCNVector3.init(width, 1.0, 1.0)
         self.backConnection.scale = SCNVector3.init(width, 1.0, 1.0)
         
-        self.boardWidth =  BOARD_WIDTH * width
-        self.boardLength = BOARD_LENGTH * lenght
+        self.boardWidth =  self.BOARD_WIDTH * width
+        self.boardLength = self.BOARD_LENGTH * lenght
         
         self.leftBackLeg.scale = SCNVector3.init(1.0, height, 1.0)
         self.leftFrontLeg.scale = SCNVector3.init(1.0, height, 1.0)
         self.rightBackLeg.scale = SCNVector3.init(1.0, height, 1.0)
         self.rightFrontLeg.scale = SCNVector3.init(1.0, height, 1.0)
-        self.legHeight = LEG_HEIGHT * height
+        self.legHeight = self.LEG_HEIGHT * height
         
         self.reloadPositions()
     }
@@ -124,51 +127,46 @@ class PrimitivesScene: SCNScene {
     }
     
     func reloadPositions(){
-        let legY = -LEG_HEIGHT + legHeight/2
-        let boardY = legY + legHeight/2 + boardHeight/2
+        let legY = -self.LEG_HEIGHT + self.legHeight/2
+        let boardY = legY + self.legHeight/2 + self.boardHeight/2
         
         self.board.position = SCNVector3.init(0.0, boardY, 0.0)
-        self.leftBackLeg.position = SCNVector3.init((-(self.boardWidth/2) + (legWidth/2)), legY, -(boardLength/2 - legLenght/2))
-        self.leftFrontLeg.position = SCNVector3.init((-(self.boardWidth/2) + (legWidth/2)), legY, (boardLength/2 - legLenght/2))
-        self.rightBackLeg.position = SCNVector3.init(((self.boardWidth/2) - (legWidth/2)), legY, -(boardLength/2 - legLenght/2))
-        self.rightFrontLeg.position = SCNVector3.init(((self.boardWidth/2) - (legWidth/2)), legY, (boardLength/2 - legLenght/2))
+        self.leftBackLeg.position = SCNVector3.init((-(self.boardWidth/2) + (self.legWidth/2)), legY, -(self.boardLength/2 - self.legLenght/2))
+        self.leftFrontLeg.position = SCNVector3.init((-(self.boardWidth/2) + (self.legWidth/2)), legY, (self.boardLength/2 - self.legLenght/2))
+        self.rightBackLeg.position = SCNVector3.init(((self.boardWidth/2) - (self.legWidth/2)), legY, -(self.boardLength/2 - self.legLenght/2))
+        self.rightFrontLeg.position = SCNVector3.init(((self.boardWidth/2) - (self.legWidth/2)), legY, (self.boardLength/2 - self.legLenght/2))
         
-        self.leftConnection.position = SCNVector3.init((-(self.boardWidth/2) + (legWidth/2)), CGFloat.init(self.frontConnection.position.y), 0.0)
-        self.rightConnection.position = SCNVector3.init(((self.boardWidth/2) - (legWidth/2)), CGFloat.init(self.frontConnection.position.y), 0.0)
-        self.frontConnection.position = SCNVector3.init(0.0, CGFloat.init(self.frontConnection.position.y), (boardLength/2 - legLenght/2))
-        self.backConnection.position = SCNVector3.init(0.0, CGFloat.init(self.frontConnection.position.y), -(boardLength/2 - legLenght/2))
+        self.leftConnection.position = SCNVector3.init((-(self.boardWidth/2) + (self.legWidth/2)), CGFloat.init(self.frontConnection.position.y), 0.0)
+        self.rightConnection.position = SCNVector3.init(((self.boardWidth/2) - (self.legWidth/2)), CGFloat.init(self.frontConnection.position.y), 0.0)
+        self.frontConnection.position = SCNVector3.init(0.0, CGFloat.init(self.frontConnection.position.y), (self.boardLength/2 - self.legLenght/2))
+        self.backConnection.position = SCNVector3.init(0.0, CGFloat.init(self.frontConnection.position.y), -(self.boardLength/2 - self.legLenght/2))
     }
     
     func createBoard() -> SCNNode {
-        let boardGeometry = SCNBox(width: boardWidth, height: boardHeight, length: boardLength, chamferRadius: 0.02)
+        let boardGeometry = SCNBox(width: self.boardWidth, height: self.boardHeight, length: self.boardLength, chamferRadius: 0.02)
         
         let material_L = SCNMaterial()
         material_L.diffuse.contents = #imageLiteral(resourceName: "texture")
         boardGeometry.materials = [material_L]
         
         let boardNode = SCNNode(geometry: boardGeometry)
-        mainNode.addChildNode(boardNode)
+        self.mainNode.addChildNode(boardNode)
         return boardNode
     }
     
     func createLeg() -> SCNNode {
-        let legGeometry = SCNBox(width: legWidth, height: legHeight, length: legLenght, chamferRadius: 0.0)
+        let legGeometry = SCNBox(width: self.legWidth, height: self.legHeight, length: self.legLenght, chamferRadius: 0.0)
         legGeometry.firstMaterial?.diffuse.contents = UIColor.black
-        
         let legNode = SCNNode(geometry: legGeometry)
-//        legNode.eulerAngles = SCNVector3.init(90*3.1417/180, 0, 0)
-
-        mainNode.addChildNode(legNode)
+        self.mainNode.addChildNode(legNode)
         return legNode
     }
     
     func createConnectionLeg(width: CGFloat, height: CGFloat, lenght: CGFloat, chamferRadius: CGFloat) -> SCNNode {
         let legGeometry = SCNBox(width: width, height: height, length: lenght, chamferRadius: chamferRadius)
         legGeometry.firstMaterial?.diffuse.contents = UIColor.black
-        
         let legNode = SCNNode(geometry: legGeometry)
-//        legNode.eulerAngles = SCNVector3.init(90*3.1417/180, 0, 0)
-        mainNode.addChildNode(legNode)
+        self.mainNode.addChildNode(legNode)
         return legNode
     }
     
@@ -183,4 +181,3 @@ class PrimitivesScene: SCNScene {
         return node
     }
 }
-
