@@ -1,6 +1,6 @@
 # Noo.ma - AR app
 
-Noo.ma zrobiona przez Piotrka i Marcela. Jest zajebista!
+Noo.ma zrobiona przez Piotrka i Marcela.
 
 ## Requirement
 
